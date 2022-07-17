@@ -67,6 +67,11 @@ main :: proc(){
             }
             output: = strings.concatenate({shared, "\\", output_name})
             clone_repository(args[1], output)
+            for d in mod.dependencies{
+                if d == args[1]{
+                    return 
+                }
+            }
             if os.exists(output){
                 append(&mod.dependencies, args[1])
             }
